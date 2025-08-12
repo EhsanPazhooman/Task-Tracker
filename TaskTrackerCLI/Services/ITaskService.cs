@@ -4,7 +4,11 @@ namespace TaskTrackerCLI.Services;
 
 public interface ITaskService
 {
-    List<TaskItem> LoadTasks();
     void SaveTasks();
     void AddTask(string Description);
+    void UpdateTask(int Id, string Description);
+    void DeleteTask(int Id);
+    void MarkInProgressTask(int Id);
+    void MarkDone(int Id);
+    List<TaskItem> GetAllTasks();
 }
