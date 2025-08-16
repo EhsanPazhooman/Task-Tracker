@@ -75,10 +75,36 @@ public class TaskService : ITaskService
 
     public void MarkInProgressTask(int Id)
     {
+        var tasks = LoadAllTasks();
+        
+        var task = tasks.FirstOrDefault(t => t.Id == Id);
+        
+        if (task is null)
+        {
+            Console.WriteLine($"Task with Id {Id} not found");
+            return;
+        }
+
+        task.Status = "in-progress";
+        
+        SaveTasks(tasks);
     }
 
     public void MarkDone(int Id)
     {
+        var tasks = LoadAllTasks();
+        
+        var task = tasks.FirstOrDefault(t => t.Id == Id);
+        
+        if (task is null)
+        {
+            Console.WriteLine($"Task with Id {Id} not found");
+            return;
+        }
+
+        task.Status = "done";
+        
+        SaveTasks(tasks);
     }
 
     public List<TaskItem> LoadAllTasks()
