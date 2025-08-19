@@ -107,6 +107,12 @@ public class TaskService : ITaskService
         SaveTasks(tasks);
     }
 
+    public List<TaskItem> GetTasksByStatus(string Status)
+    {
+        var tasks = LoadAllTasks();
+        return tasks.Where(t => string.Equals(t.Status, Status, StringComparison.OrdinalIgnoreCase)).ToList();
+    }
+
     public List<TaskItem> LoadAllTasks()
     {
         if (!File.Exists(FilePath))

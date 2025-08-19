@@ -10,5 +10,6 @@ public interface ITaskService
     void DeleteTask(int Id);
     void MarkInProgressTask(int Id);
     void MarkDone(int Id);
+    List<TaskItem> GetTasksByStatus(string Status);
     List<TaskItem> LoadAllTasks();
 }
